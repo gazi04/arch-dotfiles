@@ -61,8 +61,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 
 # Set the screen to lock after 10 minutes (600 seconds) of inactivity
-# 20 minutes (1200 seconds)
-exec --no-startup-id xset s 1200
+exec --no-startup-id xset dpms 900 1200 0
+exec --no-startup-id bash -c "xset s 600"
 
 # Use xss-lock to lock the screen after inactivity
 exec --no-startup-id xss-lock -- betterlockscreen -l
