@@ -1,37 +1,32 @@
-#!/bin/bash
+!/bin/bash
 
-get_spotify_status() {
-  if pgrep -x "spotify" > /dev/null; then
-    status=$(playerctl --player=spotify status 2>/dev/null)
+get_current_media_status() {
+  if playerctl --all-players status &> /dev/null; then
+    status=$(playerctl --all-players status 2>/dev/null)
 
     if [ "$status" = "Playing" ] || [ "$status" = "Paused" ]; then
-      artist=$(playerctl --player=spotify metadata artist)
-      title=$(playerctl --player=spotify metadata title)
+      artist=$(playerctl --all-players metadata artist 2>/dev/null || echo "Unknown Artist")
+      title=$(playerctl --all-players metadata title 2>/dev/null || echo "Unknown Title")
 
       song_info="$title - $artist"
-      
-      max_length=40
-      
+
+      max_length=50
       if [ ${#song_info} -gt $max_length ]; then
         song_info="${song_info:0:$max_length}..."
       fi
 
       echo "$song_info"
     else
-      echo "Spotify is stopped"
+      echo "Stopped"
     fi
   else
     echo ""
   fi
 }
 
-get_spotify_status
+get_current_media_status
 
 while true; do
-  if ! pgrep -x "spotify" > /dev/null; then
-    echo ""
-  else
-    get_spotify_status
-  fi
+  get_current_media_status
   sleep 1
 done
