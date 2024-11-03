@@ -36,10 +36,11 @@ bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t imag
 bindsym $mod+p exec ~/.config/i3/rofi_power_menu.sh
 
 # Multimedia keys for controlling media playback
-bindsym XF86AudioPlay exec --no-startup-id playerctl --player=spotify play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl  --player=spotify next
-bindsym XF86AudioPrev exec --no-startup-id playerctl --player=spotify  previous
-bindsym XF86AudioStop exec --no-startup-id playerctl --player=spotify  stop
+bindsym XF86AudioPlay exec --no-startup-id playerctl --all-players play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl --all-players next
+bindsym XF86AudioPrev exec --no-startup-id playerctl --all-players previous
+bindsym XF86AudioStop exec --no-startup-id playerctl --all-players stop
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -69,6 +70,8 @@ exec --no-startup-id xss-lock -- betterlockscreen -l
 
 # Run the media check script every 60 seconds to prevent locking during playback
 exec_always --no-startup-id bash -c "while true; do ~/.config/i3/check_media.sh; sleep 60; done"
+
+bindsym Ctrl+$mod+p exec bash -c "notify-send 'hello'"
 
 # Optional: Set up a notification 1 minute before lock
 # exec --no-startup-id bash -c 'sleep $((600-60)) && notify-send "Locking in 1 minute!"'
