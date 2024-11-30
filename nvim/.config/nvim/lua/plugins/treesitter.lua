@@ -6,7 +6,7 @@ return {
       "vim", "lua", "vimdoc",
       "html", "css", "json",
       "c_sharp", "diff", "php",
-      "arduino"
+      "arduino", "typescript"
     },
     higlight = {
       enable = true,
