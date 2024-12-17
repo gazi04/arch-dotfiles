@@ -34,6 +34,22 @@ require("lazy").setup({
 
 }, lazy_config)
 
+require('telescope').setup {
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--no-ignore',  -- This disables .gitignore respect
+      '--hidden'      -- Include hidden files
+    },
+    -- other settings
+  }
+}
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
