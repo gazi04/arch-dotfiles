@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the battery percentage
-battery_level=$(cat /sys/class/power_supply/BAT1/capacity)
+battery_level=$(cat /sys/class/power_supply/BAT0/capacity)
 
 # Check if the battery level is below 30%
 if [ "$battery_level" -lt 30 ]; then

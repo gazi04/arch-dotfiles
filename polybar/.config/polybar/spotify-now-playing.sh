@@ -10,7 +10,7 @@ get_current_media_status() {
 
       song_info="$title - $artist"
 
-      max_length=50
+      max_length=30
       if [ ${#song_info} -gt $max_length ]; then
         song_info="${song_info:0:$max_length}..."
       fi

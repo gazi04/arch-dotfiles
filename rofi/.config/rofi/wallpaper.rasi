@@ -1,0 +1,17 @@
+configuration {
+    font: "MesloLGS Nerd Font Bold 10";
+    width: 30%;
+    lines: 10;
+    padding: 20px;
+}
+
+listview {
+    dynamic: true;
+    scrollbar: false;
+}
+
+entry {
+    placeholder: "Search Wallpaper...";
+}
+
+@theme "catppuccin-mocha"
